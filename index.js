@@ -1,14 +1,14 @@
+// index.js
+
 const { Worker, isMainThread } = require('worker_threads');
 const amqp = require('amqplib');
 const { MongoClient } = require('mongodb');
-const config = require('./config');
-let client; // Single MongoDB client for the application
-let channel; // RabbitMQ channel for message consumption
-const mongoQueue = []; // Queue for MongoDB operations with retry mechanism
+let config = require('./config');
 
-let connectionRetryCount = 0;
-
-let retryDelay = config.INITIAL_RETRY_DELAY_MS;
+// Function to set custom configuration
+function setConfig(newConfig) {
+    config = { ...config, ...newConfig };
+}
 
 async function createClient() {
     return MongoClient.connect(config.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -154,7 +154,7 @@ async function main() {
     await consumeMessages();
     await retryFailedOperations();
     if (isMainThread) {
-        const numWorkers = config.NUM_OF_WORKER;
+        const numWorkers = config.NUM_WORKERS;
         for (let i = 0; i < numWorkers; i++) {
             new Worker(__filename);
         }
@@ -162,3 +162,8 @@ async function main() {
 }
 
 main().catch(console.error);
+
+// Export functions or objects for customization
+module.exports = {
+    setConfig
+};
