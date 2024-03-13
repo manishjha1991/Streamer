@@ -1,6 +1,6 @@
 {
   "name": "packet-streamer",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "This npm package provides a Node.js script for consuming and processing messages from RabbitMQ, utilizing worker threads for concurrent message processing and integrating with MongoDB for data storage",
   "main": "index.js",
   "scripts": {
