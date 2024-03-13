@@ -35,7 +35,7 @@ This Node.js script establishes connections with MongoDB and RabbitMQ to consume
 4. Run the script:
 
    ```bash
-   node your_script_name.js
+   npm start
    ```
 
 ### Contributing
