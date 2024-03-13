@@ -1,5 +1,5 @@
 module.exports = {
-    QUEUE_NAME: process.env.QUEUE_NAME || 'streamer_queue',
+    QUEUE_NAME: process.env.QUEUE_NAME || 'gradient_call_log',
     RETRY_QUEUE_NAME: process.env.RETRY_QUEUE_NAME || 'streamer_retry',
     MONGODB_URL: process.env.MONGODB_URL || 'mongodb://localhost:27017',
     DATABASE_NAME: process.env.DATABASE_NAME || 'record',
