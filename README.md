@@ -19,7 +19,7 @@ To update the README file with the additional configurations and environment var
 
 ---
 
-# Call Event Processing Application
+# Event Processing Application
 
 This Node.js application processes  events by consuming messages from RabbitMQ, storing data in MongoDB, and handling retries for failed operations.
 
@@ -53,10 +53,10 @@ The application uses the following configuration variables, which can be set via
 3. Update the configuration variables in the script, if necessary.
 4. Import Package then use 
    ```
-   const callEventProcessor = require('packet-streamer');
+   const EventProcessor = require('packet-streamer');
 
    // Set custom configuration
-   callEventProcessor.setConfig({
+   EventProcessor.setConfig({
       QUEUE_NAME: 'custom_queue_name',
       MONGODB_URL: 'custom_mongodb_url',
       RABBITMQ_URL:'custom_rmq_url'
@@ -65,8 +65,8 @@ The application uses the following configuration variables, which can be set via
       // ... other configuration
    });
 
-   // Run the call event processor
-   const result = callEventProcessor.runCallEventProcessor();
+   // Run the  event processor
+   const result = EventProcessor.main();
    // log result 
    ```
 ### Contributing

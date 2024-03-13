@@ -161,9 +161,10 @@ async function main() {
     }
 }
 
-main().catch(console.error);
+
 
 // Export functions or objects for customization
 module.exports = {
-    setConfig
+    setConfig,
+    main
 };
