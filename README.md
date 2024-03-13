@@ -58,10 +58,11 @@ The application uses the following configuration variables, which can be set via
    // Set custom configuration
    callEventProcessor.setConfig({
       QUEUE_NAME: 'custom_queue_name',
-      MONGODB_URL: 'custom_mongodb_url'
+      MONGODB_URL: 'custom_mongodb_url',
+      RABBITMQ_URL:'custom_rmq_url'
       RETRY_QUEUE_NAME: 'delay_custom_queue_name',
       DATABASE_NAME:'custom'
-      // OTHER CONFIGURATION
+      // ... other configuration
    });
 
    // Run the call event processor
