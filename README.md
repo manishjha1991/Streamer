@@ -15,13 +15,32 @@ This Node.js script establishes connections with MongoDB and RabbitMQ to consume
 - `amqplib`: Library for interacting with RabbitMQ.
 - `mongodb`: MongoDB driver for Node.js.
 
-### Configuration
-- `MONGODB_URL`: URL for connecting to MongoDB.
-- `QUEUE_NAME`: Name of the RabbitMQ queue for consuming call event messages.
-- `RETRY_QUEUE_NAME`: Name of the RabbitMQ queue for retrying failed operations.
-- `MAX_RETRY_COUNT`: Maximum number of retry attempts for failed MongoDB operations.
-- `RETRY_TIMEOUT_MS`: Timeout duration for retrying failed operations.
-- `MAX_CONNECTION_RETRY_COUNT`: Maximum number of retry attempts for establishing connections.
+To update the README file with the additional configurations and environment variables, you can include descriptions of each configuration variable and how they are used in the application. Here's a suggested format:
+
+---
+
+# Call Event Processing Application
+
+This Node.js application processes call events by consuming messages from RabbitMQ, storing data in MongoDB, and handling retries for failed operations.
+
+## Configuration
+
+The application uses the following configuration variables, which can be set via environment variables or defaults to the provided values:
+
+- `QUEUE_NAME`: Name of the RabbitMQ queue for consuming call event messages. Default: `'streamer_queue'`.
+- `RETRY_QUEUE_NAME`: Name of the RabbitMQ queue for retrying failed operations. Default: `'streamer_retry'`.
+- `MONGODB_URL`: URL for connecting to MongoDB. Default: `'mongodb://localhost:27017'`.
+- `DATABASE_NAME`: Name of the MongoDB database to store call records. Default: `'record'`.
+- `MAX_POOL_SIZE`: Maximum pool size for MongoDB connections. Default: `5`.
+- `MAX_RETRY_COUNT`: Maximum number of retry attempts for failed MongoDB operations. Default: `3`.
+- `RETRY_TIMEOUT_MS`: Timeout duration (in milliseconds) for retrying failed operations. Default: `5000`.
+- `RABBITMQ_URL`: URL for connecting to RabbitMQ. Default: `'amqp://localhost'`.
+- `NUM_WORKERS`: Number of worker threads to spawn for processing messages. Default: `4`.
+- `MAX_CONNECTION_RETRY_COUNT`: Maximum number of retry attempts for establishing connections. Default: `5`.
+- `INITIAL_RETRY_DELAY_MS`: Initial retry delay (in milliseconds) for connection retries. Default: `1000`.
+- `NUM_OF_WORKER`: Number of worker threads to spawn for processing messages. Default: `4`.
+- `COLLECTION_NAME`: Name of the MongoDB collection to store call events. Default: `'event'`.
+
 
 ### Usage
 1. Ensure MongoDB and RabbitMQ servers are running.
