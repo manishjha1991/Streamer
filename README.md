@@ -47,16 +47,23 @@ The application uses the following configuration variables, which can be set via
 2. Install dependencies:
 
    ```bash
-   npm install
+   npm install packet-streamer -- save
    ```
 
 3. Update the configuration variables in the script, if necessary.
-4. Run the script:
+4. Import Package then use 
+```
+const callEventProcessor = require('call-event-processor');
 
-   ```bash
-   npm start
-   ```
+// Set custom configuration
+callEventProcessor.setConfig({
+    QUEUE_NAME: 'custom_queue_name',
+    MONGODB_URL: 'custom_mongodb_url'
+});
 
+// Run the call event processor
+callEventProcessor.runCallEventProcessor();
+```
 ### Contributing
 Contributions are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or submit a pull request.
 
