@@ -53,21 +53,15 @@ The application uses the following configuration variables, which can be set via
 3. Update the configuration variables in the script, if necessary.
 4. Import Package then use 
    ```
-   const EventProcessor = require('packet-streamer');
+   const callEventProcessor = require('packet-streamer');
+   const config = {
+      QUEUE_NAME:'streamer_queue',
+      DATABASE_NAME:'streamer_database'
+      // Other configuration options
+   };
 
-   // Set custom configuration
-   EventProcessor.setConfig({
-      QUEUE_NAME: 'custom_queue_name',
-      MONGODB_URL: 'custom_mongodb_url',
-      RABBITMQ_URL:'custom_rmq_url'
-      RETRY_QUEUE_NAME: 'delay_custom_queue_name',
-      DATABASE_NAME:'custom'
-      // ... other configuration
-   });
-
-   // Run the  event processor
-   const result = EventProcessor.main();
-   // log result 
+   const packetStreamer = new callEventProcessor(config);
+   packetStreamer.main().catch(console.error);
    ```
 ### Contributing
 Contributions are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or submit a pull request.
