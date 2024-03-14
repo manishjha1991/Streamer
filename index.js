@@ -81,11 +81,9 @@ class PacketStreamer {
 
     async processMessage(data) {
         try {
-            const { call_start } = data.body;
-            //const COLLECTION_NAME = `call_event_${call_start.call_id}`;
             const db = this.client.db(this.config.DATABASE_NAME?this.config.DATABASE_NAME:config.DATABASE_NAME);
             const collection = db.collection(this.config.COLLECTION_NAME?this.config.COLLECTION_NAME:config.COLLECTION_NAME);
-            await this.storeDataInMongoDB(collection, call_start);
+            await this.storeDataInMongoDB(collection, data);
         } catch (error) {
             console.error('Error processing message:', error);
             this.pushToRetryQueue(data);
